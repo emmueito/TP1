@@ -5,7 +5,7 @@ Desidratador Tecnologico
 ### Proyecto del curso de sistemas embebidos
 #### Jose Mariano Emmanuel
 
-[Pagina de Educacion en Tecnologia](https://www.emueito.ar/)
+
 
 ---
 
