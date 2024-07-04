@@ -7,7 +7,7 @@ Desidratador Tecnologico
 
 
 
----
+
 
   El siguiente proyecto *Deshidratador Tecnologico* Es el resultado de una combinacion de conocimientos nuevos y conocimientos ya adquiridos en otras etapas de formacion. 
 
