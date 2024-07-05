@@ -14,11 +14,7 @@
   Proyecto de Deshidratador de Alimentos 
 
 
-  ![Deshidratador](Imagen_2.jpg)
-
-  ![Imagen de componentes](imagen1.png "Imagen")
-
-  
+  ![Deshidratador](Imagen_1.jpg)  
 
 
 ![Imagen del proyecto](https://m.media-amazon.com/images/I/61XAvgLpF7L._AC_SL1100_.jpg)
