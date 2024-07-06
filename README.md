@@ -68,9 +68,69 @@ Funcionamiento:
 int main()
 {
 
-    while (true) {
-        printf("Hola Profes");
-        printf("Estoy trabajando y me va a llevar un tiempito entender esto. Ustedes sigan nomas que yo los sigo a otro ritmo!!!");
+    while (true) {#include <PID.h>
+
+// Definición de pines
+const int sensorPin = A0; // Pin del sensor LM35
+const int heaterPin = PB9; // Pin del elemento calefactor (PWM)
+const int potPin = A1;    // Pin del potenciómetro
+
+// Definición de variables
+float setPoint = 50;    // Temperatura deseada (inicialmente 50°C)
+float Kp = 1.0;         // Constante proporcional del PID
+float Ki = 0.1;         // Constante integral del PID
+float Kd = 0.0;        // Constante derivativa del PID
+
+PID<float> myPID(&setPoint, 0, 0, Kp, Ki, Kd); // Objeto PID
+
+void setup() {
+  Serial.begin(9600);   // Inicializa la comunicación serial
+
+  // Configuración del pin del elemento calefactor como salida PWM
+  pinMode(heaterPin, OUTPUT);
+  tim2_pwm_config(heaterPin);
+
+  // Configuración del pin del potenciómetro como entrada analógica
+  pinMode(potPin, INPUT);
+
+  myPID.setSampleTime(1000); // Establece el tiempo de muestreo del PID en 1 segundo
+
+  myPID.autoTune(); // Realiza un autoajuste de los parámetros PID
+}
+
+void loop() {
+  // Lectura del sensor LM35
+  int sensorValue = analogRead(sensorPin);
+  float celsius = sensorValue * 5.0 / 1024.0; // Convierte el valor analógico a temperatura en °C
+
+  // Lectura del potenciómetro
+  int potValue = analogRead(potPin);
+  setPoint = map(potValue, 0, 1023, 30, 70); // Actualiza la temperatura deseada en base al potenciómetro
+
+  // Cálculo del error de temperatura
+  float error = setPoint - celsius;
+
+  // Actualización del controlador PID
+  myPID.update(error);
+
+  // Obtención de la potencia del calentador (entre 0 y 1)
+  float heaterOutput = myPID.getOutput() / 100.0;
+
+  // Control del elemento calefactor (PWM)
+  tim2_pwm_set_duty(heaterPin, heaterOutput * 255.0);
+
+  // Impresión de información en la pantalla serial
+  Serial.print("Temperatura actual: ");
+  Serial.print(celsius);
+  Serial.print("°C\tTemperatura deseada: ");
+  Serial.print(setPoint);
+  Serial.print("°C\tError: ");
+  Serial.print(error);
+  Serial.print("°C\tPotencia del calentador: ");
+  Serial.println(heaterOutput * 100.0);
+
+  delay(1000); // Retardo de 1 segundo
+}
     }
 }
 
