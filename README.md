@@ -63,12 +63,13 @@ Funcionamiento:
 
 ```c++
 #include "mbed.h"
+#include <PID.h>
 
 // main() runs in its own thread in the OS
 int main()
 {
 
-    while (true) {#include <PID.h>
+    while (true) {
 
 // Definición de pines
 const int sensorPin = A0; // Pin del sensor LM35
