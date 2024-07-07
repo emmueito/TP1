@@ -3,6 +3,9 @@
 ### Proyecto del curso de sistemas embebidos
 #### Jose Mariano Emmanuel
 
+
+** email_: marianoe.jose@gmail.com
+
 ---
 
   El siguiente proyecto *Deshidratador Tecnológico* Es el resultado de una combinación de conocimientos nuevos y conocimientos ya adquiridos en otras etapas de formación. 
