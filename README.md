@@ -2,6 +2,7 @@
 ## Deshidratador Tecnologico
 ### Proyecto del curso de sistemas embebidos
 #### Jose Mariano Emmanuel
+**marianoe.jose@gmail.com
 
 ---
 
