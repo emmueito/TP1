@@ -1,6 +1,9 @@
 # Trabajo practico N° 1
+
 ## Deshidratador Tecnologico
+
 ### Proyecto del curso de sistemas embebidos
+
 #### Jose Mariano Emmanuel
 
 
