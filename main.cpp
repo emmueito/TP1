@@ -1,10 +1,9 @@
 #include "mbed.h"
+#include <PID.h>
 
 // main() runs in its own thread in the OS
 int main()
 {
-
-   #include <PID.h>
 
 const int sensorPin = A0; // LM35 sensor pin
 const int heaterPin = PB9; // Heating element pin (PWM)
