@@ -44,7 +44,7 @@ Funcionamiento:
     *   **Sistema de control** 
     [VER](https://articulo.mercadolibre.com.ar/MLA-925594160-arduino-uno-ch340-ccable-usb-compatible-_JM#position%3D8%26search_layout%3Dgrid%26type%3Ditem%26tracking_id%3Dad2f852f-0376-4c8a-aa21-a637e89b38eb)
 
-    ![Deshidratador](imagen16_arduino.png) "Ver informacion"
+    ![Arduino](Imagen16_arduino.png) "Ver informacion"
 
        
 
