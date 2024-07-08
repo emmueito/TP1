@@ -7,15 +7,10 @@
 #### Jose Mariano Emmanuel
 
 
-** email_: marianoe.jose@gmail.com
+## email_: marianoe.jose@gmail.com
 
 ---
 
-  El siguiente proyecto *Deshidratador Tecnológico* Es el resultado de una combinación de conocimientos nuevos y conocimientos ya adquiridos en otras etapas de formación. 
-
-  Quisiera agradecer a los organizadores y al equipo de docentes, que con tanta dedicación deciden transmitir sus saberes, y así formar nuevos ciudadanos capaces de caminar con la tecnología. 
-
-  **Prologó:**
 
   Proyecto de Deshidratador de Alimentos 
 
@@ -49,14 +44,13 @@ Funcionamiento:
 
 
     * Opcional f429zi
-        1. u otra de la familia Núcleo
 
 
 *   Sensores de temperatura (para cada bandeja)
     * LM 35
 
 *   Elementos calefactores (para cada bandeja)
-    * Resistores
+    * Resistores de filamento
 
 •   Paneles solares fotovoltaicos
 
@@ -69,22 +63,23 @@ Funcionamiento:
 
 ```c++
 
-#include "mbed.h"
-
-int sensorTemp;
-float tempSen;
-float temp;
+int senTemp;
+float estadoTemp;
+float TEMP;
 
 
 
-void setup(){
+void setup() {
+  Serial.begin(9600);
+  // put your setup code here, to run once:
 
-    Serial.begin(9600);
+}
 
- }
+void loop() {
+  senTemp = digitalRead
 
- void loop()
-    {
+void loop()
+{
   sensorTemp = analogRead(A0);
   tempSen = (sensorTemp * (5.0/1024));
   temp = (tempSen * 100)-55;
