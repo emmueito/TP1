@@ -44,7 +44,7 @@ Funcionamiento:
     *   **Sistema de control** 
     [VER](https://articulo.mercadolibre.com.ar/MLA-925594160-arduino-uno-ch340-ccable-usb-compatible-_JM#position%3D8%26search_layout%3Dgrid%26type%3Ditem%26tracking_id%3Dad2f852f-0376-4c8a-aa21-a637e89b38eb)
 
-    ![Deshidratador](imagen_5_arduino.png) "Ver informacion"
+    ![Deshidratador](imagen16_arduino.png) "Ver informacion"
 
        
 
@@ -54,7 +54,7 @@ Funcionamiento:
 *   Sensores de temperatura (para cada bandeja)
     * **LM 35 Sensor Tempreatura** 
     [VER](https://articulo.mercadolibre.com.ar/MLA-1664692618-sensor-analogico-temperatura-lm35-55c-a-150c-_JM#position%3D7%26search_layout%3Dgrid%26type%3Ditem%26tracking_id%3D11ef63c4-b708-4618-abbd-f49fd6b1f79a)
-     ![LM35](imagen_4lm35.jpg)** Ver informacion
+     ![LM35](imagen15_lm35.png)** Ver informacion
 
 
     ----
@@ -205,15 +205,16 @@ El deshidratador de alimentos con Arduino Uno es una herramienta útil para cons
 
 
 
------
+
 
 
 * **Sistema**
-  ![sistema](sistemaDeshidratador.png)
+![sistema](st.png)
 
     ** Sume algun punto?
 
     ![sistema](uu.png)
+-----
 
 
 
