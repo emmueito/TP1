@@ -43,60 +43,59 @@ Funcionamiento:
 *   Placa con microcontrolador 
     *   **Sistema de control** 
     [VER](https://articulo.mercadolibre.com.ar/MLA-925594160-arduino-uno-ch340-ccable-usb-compatible-_JM#position%3D8%26search_layout%3Dgrid%26type%3Ditem%26tracking_id%3Dad2f852f-0376-4c8a-aa21-a637e89b38eb)
-
-    ![Arduino](Imagen16_arduino.png) "Ver informacion"
+    ![Arduino](Imagen1_arduino.png) "Ver informacion"
 
        
 
-    -----
+    ----
 
 
 *   Sensores de temperatura (para cada bandeja)
-    * **LM 35 Sensor Tempreatura** 
+    *   **LM 35 Sensor Tempreatura** 
     [VER](https://articulo.mercadolibre.com.ar/MLA-1664692618-sensor-analogico-temperatura-lm35-55c-a-150c-_JM#position%3D7%26search_layout%3Dgrid%26type%3Ditem%26tracking_id%3D11ef63c4-b708-4618-abbd-f49fd6b1f79a)
-     ![LM35](imagen15_lm35.png)** Ver informacion
+    ![LM35](imagen2_lm35.png)** Ver informacion
 
 
     ----
 
 *   Elementos calefactores (para cada bandeja)
-    * **Resistores**
+    *   **Resistores**
     [VER](https://articulo.mercadolibre.com.ar/MLA-1423897837-4-resistencias-velas-horno-electrico-grill-43cm-4x-43-cm-_JM#polycard_client=recommendations_vip-pads-up&reco_backend=vip_pads_up_ranker_retrieval_system_odin_marketplace&reco_client=vip-pads-up&reco_item_pos=0&reco_backend_type=low_level&reco_id=46c4f2c3-5d62-428c-b2f6-1c6b63cb730d&is_advertising=true&ad_domain=VIPDESKTOP_UP&ad_position=1&ad_click_id=NThkMDBjNjEtMDUzYy00MTg0LWFiODktZTlhNzhlYzAzNzM1&gid=1&pid=1) 
-    ![Elemento calefactor](imagen9_resistencia.png) Ver informacion
+    ![Elemento calefactor](imagen3_resistencia.png) Ver informacion
 
-    -----
+    ----
 
 
 * Panel solar fotovoltaicos
     *   **Caracteristicas 12V 100W**
     [VER](https://articulo.mercadolibre.com.ar/MLA-1773632730-panel-solar-monocristalino-100w-12v-36-celdas-_JM#position%3D17%26search_layout%3Dgrid%26type%3Ditem%26tracking_id%3D94044454-aece-4034-a867-307de7d02b6c)
-     ![Panel solar](imagen_7_panels.png) Ver informacion
+    ![Panel solar](imagen4_panels.png) Ver informacion
 
-    ---
+    ----
 
 
 
 *  Bateria AGM/GEL 12V 55Ah 
-    * **Batería** [VER](https://articulo.mercadolibre.com.ar/MLA-819368307-bateria-agm-gel-12v-55ah-solar-ups-ciclo-profundo-cenvio-_JM#position%3D3%26search_layout%3Dstack%26type%3Ditem%26tracking_id%3Dca647c7c-fd56-4fd4-a40e-2ed9173971c2) 
-    ![Bateria](imagen_8_bateria.png) Ver informacion 
+    *   **Batería** [VER](https://articulo.mercadolibre.com.ar/MLA-819368307-bateria-agm-gel-12v-55ah-solar-ups-ciclo-profundo-cenvio-_JM#position%3D3%26search_layout%3Dstack%26type%3Ditem%26tracking_id%3Dca647c7c-fd56-4fd4-a40e-2ed9173971c2) 
+    ![Bateria](imagen5_bateria.png) Ver informacion 
 
     ------
 
 *  Inversor 1000w 12v - 220v 50 Hz
     * **Inversor DC/AC** [VER](https://www.mercadolibre.com.ar/inversor-conversor-de-corriente-onda-senoidal-pura-500va/p/MLA24149272#searchVariation%3DMLA24149272%26position%3D1%26search_layout%3Dgrid%26type%3Dproduct%26tracking_id%3D0d206164-eaae-4b62-961b-cafd6d5ef914) 
-    ![iNVERSOR](imagen10_inversor.png) Ver informacion 
+    ![iNVERSOR](imagen6_inversor.png) Ver informacion 
 
     -----
 
 * Pantalla LCD o aplicación móvil (opcional)
-    * **Pantalla LCD** [VER](https://articulo.mercadolibre.com.ar/MLA-1785207108-display-lcd-1602-hd44780-azul-16x2-16-pin-arduino-compatible-_JM#is_advertising=true&position=2&search_layout=stack&type=pad&tracking_id=91af5a7b-685b-412f-9829-71332057f2c4&is_advertising=true&ad_domain=VQCATCORE_LST&ad_position=2&ad_click_id=NDM5OGE2NDctMTYyMi00YzUzLTljZTYtYjQ3ZTI4MGU2YWMx&gid=1&pid=1)
-    ![Pantalla LCD](imagen12_LCD.png) Ver informacion 
+    *   **Pantalla LCD** [VER](https://articulo.mercadolibre.com.ar/MLA-1785207108-display-lcd-1602-hd44780-azul-16x2-16-pin-arduino-compatible-_JM#is_advertising=true&position=2&search_layout=stack&type=pad&tracking_id=91af5a7b-685b-412f-9829-71332057f2c4&is_advertising=true&ad_domain=VQCATCORE_LST&ad_position=2&ad_click_id=NDM5OGE2NDctMTYyMi00YzUzLTljZTYtYjQ3ZTI4MGU2YWMx&gid=1&pid=1)
+    ![Pantalla LCD](imagen7_LCD.png) Ver informacion 
 
     -----
 
 * Modulo Relay Rele De 2 Canales 5v 10a
-    * **RELE** [VER](https://www.mercadolibre.com.ar/modulo-relay-rele-de-2-canales-5v-10a-arduino-pic-avr/p/MLA32487694#searchVariation%3DMLA32487694%26position%3D2%26search_layout%3Dgrid%26type%3Dproduct%26tracking_id%3D9fe1d594-1b47-4075-8b89-bbdd6339737a)
-    ![Pantalla LCD](imagen13_modRele.png) Ver informacion 
+    *   **RELE** [VER](https://www.mercadolibre.com.ar/modulo-relay-rele-de-2-canales-5v-10a-arduino-pic-avr/p/MLA32487694#searchVariation%3DMLA32487694%26position%3D2%26search_layout%3Dgrid%26type%3Dproduct%26tracking_id%3D9fe1d594-1b47-4075-8b89-bbdd6339737a)
+    ![Pantalla LCD](imagen8_modRele.png) Ver informacion 
 
     ----
 
@@ -104,7 +103,7 @@ Funcionamiento:
 
 *   Regulador de Carga 10 Amper c/Display LCD c/USB
     * **Regulador Carga** [VER](https://articulo.mercadolibre.com.ar/MLA-687576849-regulador-de-carga-para-paneles-solares-10-amper-display-dig-_JM#position%3D1%26search_layout%3Dstack%26type%3Ditem%26tracking_id%3D668ec46b-3b3e-4b8c-bead-a5db498f6a55)
-    ![Regulador](imagen11_regulador.png) Ver informacion 
+    ![Regulador](imagen9_regulador.png) Ver informacion 
 
     -----
 
