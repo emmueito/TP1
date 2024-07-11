@@ -7,7 +7,7 @@
 #### Jose Mariano Emmanuel
 
 
-## email_: marianoe.jose@gmail.com
+### email_: marianoe.jose@gmail.com
 
 ---
 
@@ -35,7 +35,7 @@ Funcionamiento:
 *   Batería: La energía solar excedente se almacenará en una batería para su uso durante la noche o en días nublados, garantizando un funcionamiento continuo del sistema.
 
 *   Monitoreo y control: El usuario podrá monitorear el estado del sistema y ajustar parámetros como la temperatura y el tiempo de deshidratación a través de una interfaz de usuario, como una pantalla LCD o una aplicación móvil.
------
+----
 
 **Componentes:**
 
@@ -47,7 +47,7 @@ Funcionamiento:
 
        
 
-    ----
+
 
 
 *   Sensores de temperatura (para cada bandeja)
@@ -56,14 +56,14 @@ Funcionamiento:
     ![LM35](imagen2_lm35.png)** Ver informacion
 
 
-    ----
+
 
 *   Elementos calefactores (para cada bandeja)
     *   **Resistores**
     [VER](https://articulo.mercadolibre.com.ar/MLA-1423897837-4-resistencias-velas-horno-electrico-grill-43cm-4x-43-cm-_JM#polycard_client=recommendations_vip-pads-up&reco_backend=vip_pads_up_ranker_retrieval_system_odin_marketplace&reco_client=vip-pads-up&reco_item_pos=0&reco_backend_type=low_level&reco_id=46c4f2c3-5d62-428c-b2f6-1c6b63cb730d&is_advertising=true&ad_domain=VIPDESKTOP_UP&ad_position=1&ad_click_id=NThkMDBjNjEtMDUzYy00MTg0LWFiODktZTlhNzhlYzAzNzM1&gid=1&pid=1) 
     ![Elemento calefactor](imagen3_resistencia.png) Ver informacion
 
-    ----
+
 
 
 * Panel solar fotovoltaicos
@@ -71,7 +71,6 @@ Funcionamiento:
     [VER](https://articulo.mercadolibre.com.ar/MLA-1773632730-panel-solar-monocristalino-100w-12v-36-celdas-_JM#position%3D17%26search_layout%3Dgrid%26type%3Ditem%26tracking_id%3D94044454-aece-4034-a867-307de7d02b6c)
     ![Panel solar](imagen4_panels.png) Ver informacion
 
-    ----
 
 
 
@@ -79,25 +78,24 @@ Funcionamiento:
     *   **Batería** [VER](https://articulo.mercadolibre.com.ar/MLA-819368307-bateria-agm-gel-12v-55ah-solar-ups-ciclo-profundo-cenvio-_JM#position%3D3%26search_layout%3Dstack%26type%3Ditem%26tracking_id%3Dca647c7c-fd56-4fd4-a40e-2ed9173971c2) 
     ![Bateria](imagen5_bateria.png) Ver informacion 
 
-    ------
+
 
 *  Inversor 1000w 12v - 220v 50 Hz
     * **Inversor DC/AC** [VER](https://www.mercadolibre.com.ar/inversor-conversor-de-corriente-onda-senoidal-pura-500va/p/MLA24149272#searchVariation%3DMLA24149272%26position%3D1%26search_layout%3Dgrid%26type%3Dproduct%26tracking_id%3D0d206164-eaae-4b62-961b-cafd6d5ef914) 
     ![iNVERSOR](imagen6_inversor.png) Ver informacion 
 
-    -----
 
 * Pantalla LCD o aplicación móvil (opcional)
     *   **Pantalla LCD** [VER](https://articulo.mercadolibre.com.ar/MLA-1785207108-display-lcd-1602-hd44780-azul-16x2-16-pin-arduino-compatible-_JM#is_advertising=true&position=2&search_layout=stack&type=pad&tracking_id=91af5a7b-685b-412f-9829-71332057f2c4&is_advertising=true&ad_domain=VQCATCORE_LST&ad_position=2&ad_click_id=NDM5OGE2NDctMTYyMi00YzUzLTljZTYtYjQ3ZTI4MGU2YWMx&gid=1&pid=1)
     ![Pantalla LCD](imagen7_LCD.png) Ver informacion 
 
-    -----
+
 
 * Modulo Relay Rele De 2 Canales 5v 10a
     *   **RELE** [VER](https://www.mercadolibre.com.ar/modulo-relay-rele-de-2-canales-5v-10a-arduino-pic-avr/p/MLA32487694#searchVariation%3DMLA32487694%26position%3D2%26search_layout%3Dgrid%26type%3Dproduct%26tracking_id%3D9fe1d594-1b47-4075-8b89-bbdd6339737a)
     ![Pantalla LCD](imagen8_modRele.png) Ver informacion 
 
-    ----
+
 
 
 
@@ -105,8 +103,8 @@ Funcionamiento:
     * **Regulador Carga** [VER](https://articulo.mercadolibre.com.ar/MLA-687576849-regulador-de-carga-para-paneles-solares-10-amper-display-dig-_JM#position%3D1%26search_layout%3Dstack%26type%3Ditem%26tracking_id%3D668ec46b-3b3e-4b8c-bead-a5db498f6a55)
     ![Regulador](imagen9_regulador.png) Ver informacion 
 
-    -----
-
+ 
+----
 
 
  
@@ -114,28 +112,139 @@ Funcionamiento:
 
 ```c++
 
-int senTemp;
-float estadoTemp;
-float TEMP;
+#include "mbed.h"
+#include "arm_book_lib.h"
+#include "mbed-os.lib.h"
 
 
+#ifndef ON
+#define ON  1   
+#endif
 
-void setup() {
-  Serial.begin(9600);
-  // put your setup code here, to run once:
+#ifndef OFF
+#define OFF  !(ON) //Declaracion de MACRO
+#endif
 
+#define delay(ms)   thread_sleep_for(ms)
+#define TIEMPO_ENTRE_MUESTRAS   10
+#define NUMERO_MUESTRAS 100
+
+//--------- Definición de entradas y salidas ----------
+
+AnalogIn tempSensor (A1);
+DigitalOut maxTempLED (D2);
+DigitalOut minTempLED (D3);
+DigitalOut normalTempLED (D4);
+
+UnbufferedSerial uartUsb(USBTX, USBRX, 115200);
+
+//-------------- Declaración de variables ---------------
+
+float maxTempPermitida = 50.0;
+float minTempPermitida = 25.0;
+float tempMedia = (maxTempPermitida + minTempPermitida)/2;
+int registroTiepoAcumulado = 0;
+float lm35VecLectura[NUMERO_MUESTRAS];
+float lm35suma = 0.0;
+float lm35Promedio = 0.0;
+float lm35TempC = 0.0;
+
+//--------- Declaración de Funciones prototipos ----------
+void initOuputs();
+void checkOverHeating();
+void checkOverCooling();
+void checkRegTime();
+int tempConverter(float ratio);                                 //El ratio es la señal analógica convertida a digital entre 0.0 y 1.0
+void samplerAverager();    
+
+
+int main()
+{
+    initOuputs();
+    while (true) {
+        samplerAverager();
+        checkOverHeating();
+        checkOverCooling();
+        checkRegTime();
+    }
 }
 
-void loop() {
-  senTemp = digitalRead
+void initOuputs(){
+    maxTempLED = OFF;
+    minTempLED = OFF;
+    normalTempLED = ON;
+}
 
-void loop()
-{
-  sensorTemp = analogRead(A0);
-  tempSen = (sensorTemp * (5.0/1024));
-  temp = (tempSen * 100)-55;
-  Serial.println(temp, 1); // quiero un solo digito despeus de la coma
-  delay(1000);
+int tempConverter(float temp){                                    //Convierte señal eléctrica a ºC y actualiza el valor de temperatura
+    float tempC = temp * 3.3/0.01;
+    return tempC;
+}
+
+void samplerAverager(){
+    static int lm35Muestras = 0;
+    int i = 0;
+    lm35VecLectura[lm35Muestras] = tempSensor.read();
+    lm35Muestras++;
+    if(lm35Muestras >= NUMERO_MUESTRAS) {
+        lm35Muestras = 0;
+    };
+
+    lm35Suma = 0.0;
+    for (i = 0; i < NUMERO_MUESTRAS; i++) {
+        lm35Suma = lm35Suma + lm35VecLectura[i];
+    }
+    lm35Promedio = lm35suma / NUMERO_MUESTRAS;
+    lm35TempC = tempConverter( lm35Promedio );
+}
+
+
+void cCheckearSobrecalentamiento(){                                        //Chequea si la temperatura está por arriba del limite
+    if(lm35TempC >= maxTempPermitida){
+        maxTempLED = ON;                                        //Activa un ventilador (representado por un LED)
+        normalTempLED = OFF;
+        uartUsb.write("Alcanzó la máxima temperatura\r\n", 30); 
+        while (lm35TempC > tempMedia){
+            maxTempLED = ON;
+            samplerAverager();
+        }
+        maxTempLED = OFF;                                       //Apaga el ventilador
+        normalTempLED = ON;
+        uartUsb.write("Temperatura normalizada\r\n", 24);    
+    }
+}
+
+
+void checkearEnfriamiento(){                                        //Chequea si la temperatura está por abajo del limite
+    if(lm35TempC <= minTempPermitida){
+        minTempLED = ON;                                        //Activa una resistencia calefactora (representado por un LED)
+        normalTempLED = OFF;
+        uartUsb.write("Alcanzó la mínima temperatura\r\n", 30);
+        while (lm35TempC <= tempMedia){
+            minTempLED = ON;
+            samplerAverager();   
+        }
+        minTempLED = OFF;                                       //Apaga la resistencia calefactora
+        normalTempLED = ON;
+        uartUsb.write("Temperatura normalizada\r\n", 24);
+    }
+}
+
+
+void uartTask(){                                                    //Envia un registro de temperatura por Serial
+    char str[30];
+    sprintf(str, "Temperatura actual:%.2f \xB0 C\r\n", lm35TempC);  
+    int stringLength = strlen(str);   //Keil Studio no me tomó la función strlen()
+    uartUsb.write(str, stringLength);    
+}
+
+
+void checkearRegistroTiempo(){                                            //Chequea el tiempo entre envíos de registros
+    registroTiempoAcumulado = registroTiempoAcumulado + TIEMPO_ENTRE_MUESTRAS;
+    delay(TIEMPO_ENTRE_MUESTRAS);
+    if(registroTiempoAcumulado == 86400){                              //Tiempo de 20 min entre registros
+        uartTask();                                             //Envía registro de temperatura 
+        aregistroTiempoAcumulado = 0;
+    }
 }
    
 
