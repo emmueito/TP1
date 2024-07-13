@@ -1,6 +1,6 @@
 #include "mbed.h"
 #include "arm_book_lib.h"
-#include "mbed-os.lib.h"
+
 
 
 #ifndef ON
@@ -37,11 +37,11 @@ float lm35TempC = 0.0;
 
 //--------- Declaración de Funciones prototipos ----------
 void initOuputs();
-void checkOverHeating();
-void checkOverCooling();
-void checkRegTime();
+void checkearSobrecalentamiento();
+void checkearEnfriamiento();
+void checkearRegistroTiempo();
 int tempConverter(float ratio);                                 //El ratio es la señal analógica convertida a digital entre 0.0 y 1.0
-void samplerAverager();    
+void samplerPromedio();    
 
 
 // main() runs in its own thread in the OS
@@ -49,10 +49,10 @@ int main()
 {
     initOuputs();
     while (true) {
-        samplerAverager();
-        checkOverHeating();
-        checkOverCooling();
-        checkRegTime();
+        samplerPromedio();
+        checkearSobrecalentamiento());
+        checkearEnfriamiento();
+        checkearRegistroTiempo();
     }
 }
 
@@ -67,7 +67,7 @@ int tempConverter(float temp){                                    //Convierte se
     return tempC;
 }
 
-void samplerAverager(){
+void samplerPromedio(){
     static int lm35Muestras = 0;
     int i = 0;
     lm35VecLectura[lm35Muestras] = tempSensor.read();
@@ -85,14 +85,14 @@ void samplerAverager(){
 }
 
 
-void cCheckearSobrecalentamiento(){                                        //Chequea si la temperatura está por arriba del limite
+void checkearSobrecalentamiento(){                                        //Chequea si la temperatura está por arriba del limite
     if(lm35TempC >= maxTempPermitida){
         maxTempLED = ON;                                        //Activa un ventilador (representado por un LED)
         normalTempLED = OFF;
         uartUsb.write("Alcanzó la máxima temperatura\r\n", 30); 
         while (lm35TempC > tempMedia){
             maxTempLED = ON;
-            samplerAverager();
+            samplerPromedio();
         }
         maxTempLED = OFF;                                       //Apaga el ventilador
         normalTempLED = ON;
@@ -108,7 +108,7 @@ void checkearEnfriamiento(){                                        //Chequea si
         uartUsb.write("Alcanzó la mínima temperatura\r\n", 30);
         while (lm35TempC <= tempMedia){
             minTempLED = ON;
-            samplerAverager();   
+            samplerPromedio();   
         }
         minTempLED = OFF;                                       //Apaga la resistencia calefactora
         normalTempLED = ON;

@@ -2,7 +2,7 @@
 
 ## Deshidratador Tecnologico
 
-### Proyecto del curso de sistemas embebidos
+### Proyecto: Curso de sistemas embebidos
 
 #### Jose Mariano Emmanuel
 
@@ -12,7 +12,7 @@
 ---
 
 
-  Proyecto de Deshidratador de Alimentos 
+  #Nombre del ProyectoProyecto: _Deshidratador de Alimentos_ 
 
 
 **Objetivo:**
@@ -22,13 +22,13 @@ Desarrollar un sistema de _deshidratación_ de _alimentos_ utilizando energía s
 **Descripción:**
 
 El sistema consistirá en un deshidratador modular compuesto por bandejas apilables que albergarán los alimentos a deshidratar. Cada bandeja estará equipada con un sensor de temperatura y un elemento calefactor.
- La energía para el funcionamiento del sistema provendrá de paneles solares fotovoltaicos, almacenándose en una batería para su uso durante las horas sin luz solar.
+La energía para el funcionamiento del sistema provendrá de paneles solares fotovoltaicos, almacenándose en una batería para su uso durante las horas sin luz solar.
 
 Funcionamiento:
 
 *   Carga de alimentos: Los alimentos frescos y lavados se colocan en las bandejas del deshidratador.
 
-*   Control de temperatura: El Arduino Uno leerá los datos de los sensores de temperatura en cada bandeja y ajustará la potencia de los elementos calefactores para mantener la temperatura deseada durante todo el proceso de deshidratación.
+*   Control de temperatura: el sistema, leerá los datos de los sensores de temperatura en cada bandeja y ajustará la potencia de los elementos calefactores para mantener la temperatura deseada durante todo el proceso de deshidratación.
 
 *   Energía solar: Durante el día, los paneles solares fotovoltaicos proporcionarán energía eléctrica al sistema, alimentando el Arduino Uno y los elementos calefactores.
 
@@ -40,10 +40,10 @@ Funcionamiento:
 **Componentes:**
 
 
-*   Placa con microcontrolador 
+*   Controlador 
     *   **Sistema de control** 
     [VER](https://articulo.mercadolibre.com.ar/MLA-925594160-arduino-uno-ch340-ccable-usb-compatible-_JM#position%3D8%26search_layout%3Dgrid%26type%3Ditem%26tracking_id%3Dad2f852f-0376-4c8a-aa21-a637e89b38eb)
-    ![Arduino](Imagen1_arduino.png) "Ver informacion"
+    ![Arduino](Imagen1_F429ZI.png) "Ver informacion"
 
        
 
@@ -114,7 +114,7 @@ Funcionamiento:
 
 #include "mbed.h"
 #include "arm_book_lib.h"
-#include "mbed-os.lib.h"
+
 
 
 #ifndef ON
@@ -151,21 +151,22 @@ float lm35TempC = 0.0;
 
 //--------- Declaración de Funciones prototipos ----------
 void initOuputs();
-void checkOverHeating();
-void checkOverCooling();
-void checkRegTime();
+void checkearSobrecalentamiento();
+void checkearEnfriamiento();
+void checkearRegistroTiempo();
 int tempConverter(float ratio);                                 //El ratio es la señal analógica convertida a digital entre 0.0 y 1.0
-void samplerAverager();    
+void samplerPromedio();    
 
 
+// main() runs in its own thread in the OS
 int main()
 {
     initOuputs();
     while (true) {
-        samplerAverager();
-        checkOverHeating();
-        checkOverCooling();
-        checkRegTime();
+        samplerPromedio();
+        checkearSobrecalentamiento());
+        checkearEnfriamiento();
+        checkearRegistroTiempo();
     }
 }
 
@@ -180,7 +181,7 @@ int tempConverter(float temp){                                    //Convierte se
     return tempC;
 }
 
-void samplerAverager(){
+void samplerPromedio(){
     static int lm35Muestras = 0;
     int i = 0;
     lm35VecLectura[lm35Muestras] = tempSensor.read();
@@ -198,14 +199,14 @@ void samplerAverager(){
 }
 
 
-void cCheckearSobrecalentamiento(){                                        //Chequea si la temperatura está por arriba del limite
+void checkearSobrecalentamiento(){                                        //Chequea si la temperatura está por arriba del limite
     if(lm35TempC >= maxTempPermitida){
         maxTempLED = ON;                                        //Activa un ventilador (representado por un LED)
         normalTempLED = OFF;
         uartUsb.write("Alcanzó la máxima temperatura\r\n", 30); 
         while (lm35TempC > tempMedia){
             maxTempLED = ON;
-            samplerAverager();
+            samplerPromedio();
         }
         maxTempLED = OFF;                                       //Apaga el ventilador
         normalTempLED = ON;
@@ -221,7 +222,7 @@ void checkearEnfriamiento(){                                        //Chequea si
         uartUsb.write("Alcanzó la mínima temperatura\r\n", 30);
         while (lm35TempC <= tempMedia){
             minTempLED = ON;
-            samplerAverager();   
+            samplerPromedio();   
         }
         minTempLED = OFF;                                       //Apaga la resistencia calefactora
         normalTempLED = ON;
@@ -318,11 +319,4 @@ El deshidratador de alimentos con Arduino Uno es una herramienta útil para cons
 
 * **Sistema**
 ![sistema](st.png)
-
-    ** Sume algun punto?
-
-    ![sistema](uu.png)
------
-
-
 
